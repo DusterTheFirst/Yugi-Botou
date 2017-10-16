@@ -28,9 +28,11 @@
   },
   "homepage": "https://github.com/FatalErrorCode/Yugi-Botou#readme",
   "dependencies": {
-    "bufferutil": "^3.0.2",
     "discord.js": "^11.2.1",
-    "express": "^4.16.2",
+    "express": "^4.16.2"
+  },
+  "optionalDependencies": {
+    "erlpack": "discordapp/erlpack",
     "uws": "^8.14.1"
   }
 }
