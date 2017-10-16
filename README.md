@@ -6,7 +6,8 @@ Use the command y.help to get the command list
 [Or join the official server!](https://discord.gg/KKR94hT)
 
 ### Self-hosting
-Self-hosting the bot is totally possible. You will need to create a `config.json` file that has 5 fields or setup the appropriate environment variables before starting the bot though.  
+Self-hosting the bot is totally possible. You will need to create a `config.json` file that has 5 fields or setup the appropriate environment variables before starting the bot though.
+
 | Field | Type | Description |  
 |-------|------|-------------|  
 | token | String | Discord bot token |  
