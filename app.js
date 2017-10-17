@@ -1,6 +1,9 @@
 const Discord = require('discord.js');
 const express = require('express');
 const fs = require('fs');
+const MainManager = require('./src/MainManager.js');
+const CommandManager = require('./src/CommandManager.js');
+MainManager.associateCommandManager(CommandManager);
 
 // Config crap
 var config = {};
