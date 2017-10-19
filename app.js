@@ -14,7 +14,7 @@ else {
   config.owners = JSON.parse(process.env.OWNERS);
   config.prefix = process.env.PREFIX;
   config.port = process.env.PORT; // Used cause of Heroku
-  config.public_url = process.env.PUBLIC_URL
+  config.public_url = process.env.PUBLIC_URL;
 }
 if(config.port == null) config.port = 80;
 
