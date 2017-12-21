@@ -1,6 +1,6 @@
 import * as jimp from 'jimp';
 
-module.exports = class Card {
+export class Card {
     /** Name of the card */
     name: string = "";
 
@@ -26,7 +26,7 @@ module.exports = class Card {
     private _modifier: Modifier = Modifier.Normal;
     /** Type of card */
     get cardtype() {
-        return `${this._cardtype}/${this._modifier}`
+        return `${this._cardtype}/${this._modifier}`;
     }
 
     private _level: number = 1;
@@ -56,7 +56,7 @@ module.exports = class Card {
     private _id2: number;
     /** Card ID */
     get id() {
-        return `${this._id1}-${this._id2}`
+        return `${this._id1}-${this._id2}`;
     }
 
     /** 
@@ -121,7 +121,6 @@ module.exports = class Card {
         return this; 
     }
     /** Set the card's ID */
-    setID(id1: string): this
     setID(id1: string, id2?: number): this { 
         if (id1.includes('-')) {
             let split = id1.split('-');
@@ -153,7 +152,7 @@ module.exports = class Card {
     }
 }
 
-enum CardType {
+export enum CardType {
     Monster = "Monster",
     Ritual = "Ritual",
     Fusion = "Fusion",
@@ -163,7 +162,7 @@ enum CardType {
     Xyz = "Xyz"
 }
 
-enum Modifier {
+export enum Modifier {
     Normal = "Normal",
     Effect = "Effect",
     Devine = "Devine",
@@ -174,7 +173,7 @@ enum Modifier {
     Union = "Union"
 }
 
-enum Attribute {
+export enum Attribute {
     Light = "Light",
     Dark = "Dark",
     Fire = "Fire",
@@ -184,7 +183,7 @@ enum Attribute {
     Divine = "Divine"
 }
 
-enum Rarity {
+export enum Rarity {
     Common = "Common",
     Rare = "Rare",
     SuperRare = "Super Rare",

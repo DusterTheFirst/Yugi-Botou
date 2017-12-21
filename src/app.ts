@@ -1,10 +1,14 @@
 import * as Discord from 'discord.js';
 import * as express from 'express';
 import * as fs from 'fs';
-import { CommandHandler, HelpMode } from 'mechan.js'
+import { CommandHandler, HelpMode, ParameterType } from 'mechan.js';
+import { Card, CardType } from './card/Generator';
+import { inspect } from 'util';
 // const MainManager = require('./src/MainManager.js');
 // const CommandManager = require('./src/CommandManager.js');
 // MainManager.associateCommandManager(CommandManager);
+
+let cards: Card[] = [];
 
 // Config crap
 var config: Config = {};
@@ -48,7 +52,53 @@ handler.createCommand('info')
 handler.createCommand('create')
     .setCategory('Card commands')
     .setDescription('Create a card')
-    
+    .addParameter('image', ParameterType.Required)
+    .addParameter('name', ParameterType.Required)
+    .addParameter('description', ParameterType.Required)
+    .addParameter('attack', ParameterType.Optional)
+    .addParameter('defense', ParameterType.Optional)
+    .addParameter('level', ParameterType.Optional)
+    .addParameter('cardtype', ParameterType.Optional)
+    .addParameter('attribute', ParameterType.Optional)
+    .addParameter('year', ParameterType.Optional)
+    .addParameter('creator', ParameterType.Optional)
+    .setCallback((context) => {
+        let card = new Card(cards.length)
+                        .setCreator(context.user.tag)
+                        .setPicture(context.params.get('image'))
+                        .setName(context.params.get('name'))
+                        .setDescription(context.params.get('description'));
+
+        let attack = context.params.get('attack');
+        let defense = context.params.get('defense');
+        let level = context.params.get('level');
+        let cardtype = context.params.get('cardtype');
+        let attribute = context.params.get('attribute');
+        let year = context.params.get('year');
+        let creator = context.params.get('creator');
+
+        if (attack && defense) card.setAttDef(attack, defense);
+        if (level) card.setLevel(level);
+        if (cardtype) {
+            let split = cardtype.split('/');
+            card.setCardType(split[0], split[1]);
+        }
+        if (attribute) card.setAttribute(attribute);
+        if (year) card.setYear(year);
+        if (creator) card.setCreator(creator);
+
+        context.channel.send(`\`\`\`js\n${inspect(context.params)}\`\`\``);
+        context.channel.send(`\`\`\`js\n${inspect(card)}\`\`\``);
+
+        cards.push(card);
+    });
+
+handler.createCommand('list')
+    .setCategory('Card Commands')
+    .setDescription('List all created cards')
+    .setCallback((context) => {
+        context.channel.send(`\`\`\`js\n${inspect(cards)}\`\`\``);
+    });
 
 // client.on('message', (message) => {
 //     if (message.content.toUpperCase().startsWith(config.prefix.toUpperCase())) {
