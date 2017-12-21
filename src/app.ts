@@ -43,7 +43,12 @@ handler.createCommand('info')
     .setCategory('Info Commands')
     .setCallback((context) => {
         context.channel.send('http://localhost:8080');
-    })
+    });
+
+handler.createCommand('create')
+    .setCategory('Card commands')
+    .setDescription('Create a card')
+    
 
 // client.on('message', (message) => {
 //     if (message.content.toUpperCase().startsWith(config.prefix.toUpperCase())) {
