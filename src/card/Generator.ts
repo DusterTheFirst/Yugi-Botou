@@ -1,6 +1,4 @@
-import { Url } from "url";
-
-const Jimp = require('jimp');
+import * as jimp from 'jimp';
 
 module.exports = class Card {
     /** Name of the card */

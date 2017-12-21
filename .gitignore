@@ -2,4 +2,11 @@ node_modules/
 
 # SENSITIVE INFORMATION DO NOT STEAL PL0X
 config.json
+
+# Compiled files
 *.js
+
+# Unneccisary files
+package-lock.json
+tsconfig.json
+tslint.json
