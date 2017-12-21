@@ -34,7 +34,8 @@
     "discord.js": "^11.2.1",
     "express": "^4.16.2",
     "jimp": "^0.2.28",
-    "mechan.js": "^2.2.6"
+    "mechan.js": "^2.2.6",
+    "tslint": "^5.8.0"
   },
   "optionalDependencies": {
     "erlpack": "github:discordapp/erlpack",

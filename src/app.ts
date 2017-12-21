@@ -64,6 +64,7 @@ app.get("/", (req, res) => {
 // Login stuff good stuff
 handler.install(client)
        .login(config.token);
+       
 app.listen(config.port, () => {
     console.log("Webserver running on port " + config.port);
 });

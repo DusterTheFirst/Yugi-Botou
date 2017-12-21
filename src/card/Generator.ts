@@ -21,8 +21,15 @@ module.exports = class Card {
     /** Card defence */
     defense: number = 0;
 
+    /** Card rarity */
+    rarity: Rarity;
+
+    private _cardtype: CardType;
+    private _modifier: Modifier;
     /** Type of card */
-    cardtype: string = "monster/normal"; //ENUM?
+    get cardtype() {
+        return `${this._cardtype}/${this._modifier}`
+    }
 
     private _level: number = 0;
     /** Card level */
@@ -42,7 +49,7 @@ module.exports = class Card {
     }
 
     /** Card attrabute */
-    attribute: string; // ENUM?
+    attribute: Attribute;
 
     /** Card circulation */
     circulation: string; // ENUM?
@@ -64,65 +71,110 @@ module.exports = class Card {
     }
 
     /** Set the card's name */
-    setName(_name: string) { 
-        this.name = _name; 
+    setName(name: string) { 
+        this.name = name; 
         return this; 
     }
     /** Set the card's description */
-    setDescription(_description: string) { 
-        this.description = _description; 
+    setDescription(description: string) { 
+        this.description = description; 
         return this; 
     }
     /** Set the card's creator */
-    setCreator(_creator: string) {
-        this.creator = _creator; 
+    setCreator(creator: string) {
+        this.creator = creator; 
         return this;
     }
     /** Set the card's year */
-    setYear(_year: number) { 
-        this.year = _year; 
+    setYear(year: number) { 
+        this.year = year; 
         return this;
     }
 
     /** Set the card's attack and defence */
-    setAttDef(_attack: number, _defense: number) {
-        this.attack = _attack; 
-        this.defense = _defense;
+    setAttDef(attack: number, defense: number) {
+        this.attack = attack; 
+        this.defense = defense;
         return this; 
     }
     /** Set the card's type */
-    setCardType(_cardtype: string, _modifier: string) { 
-        //ENUM??
-        this.cardtype = _cardtype + "/" + _modifier; 
+    setCardType(cardtype: CardType, modifier: Modifier) { 
+        this._cardtype = cardtype;
+        this._modifier = modifier; 
         return this;
     }
-    /** Set the card's attrabute*/
-    setAttribute(_attribute: string) { 
-        this.attribute = _attribute;
+    /** Set the card's rairity */
+    setRairity(rairity: Rarity) {
+        this.rarity = rairity;
+        return this; 
+    }
+    /** Set the card's attrabute */
+    setAttribute(attribute: Attribute) { 
+        this.attribute = attribute;
         return this; 
     }
     /** Set the card's circulation */
-    setCirculation(_circulation: string) { 
-        this.circulation = _circulation; 
+    setCirculation(circulation: string) { 
+        this.circulation = circulation; 
         return this; 
     }
     /** Set the card's ID */
-    setID(_id: string) { 
-        this.id = _id; 
+    setID(id: string) { 
+        this.id = id; 
         return this; 
     }
     /** Set the card's picture */
-    setPicture(_pictureUrl: string) { 
-        this.pictureUrl = _pictureUrl;
+    setPicture(pictureUrl: string) { 
+        this.pictureUrl = pictureUrl;
         return this;
     }
     /** Set the card's level */
-    setLevel(_level: number) {
-        this.level = _level;
+    setLevel(level: number) {
+        this.level = level;
         return this;
     }
 
     generate() {
-        
+
     }
+}
+
+enum CardType {
+    Monster = "Monster",
+    Ritual = "Ritual",
+    Fusion = "Fusion",
+    Spell = "Spell",
+    Trap = "Trap",
+    Synchro = "Synchro",
+    Xyz = "Xyz"
+}
+
+enum Modifier {
+    Normal = "Normal",
+    Effect = "Effect",
+    Devine = "Devine",
+    Gemini = "Gemini",
+    Spirit = "Spirit",
+    Toon = "Toon",
+    Tuner = "Tuner",
+    Union = "Union"
+}
+
+enum Attribute {
+    Light = "Light",
+    Dark = "Dark",
+    Fire = "Fire",
+    Water = "Water",
+    Wind = "Wind",
+    Earth = "Earth",
+    Divine = "Divine"
+}
+
+enum Rarity {
+    Common = "Common",
+    Rare = "Rare",
+    SuperRare = "Super Rare",
+    UltraRare = "Ultra Rare",
+    SecretRare = "Secret Rare",
+    UltimiteRare = "Ultimite Rare"
 }
