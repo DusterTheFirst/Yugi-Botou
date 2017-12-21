@@ -153,41 +153,41 @@ export class Card {
 }
 
 export enum CardType {
-    Monster = "Monster",
-    Ritual = "Ritual",
-    Fusion = "Fusion",
-    Spell = "Spell",
-    Trap = "Trap",
-    Synchro = "Synchro",
-    Xyz = "Xyz"
+    Monster = "monster",
+    Ritual = "ritual",
+    Fusion = "fusion",
+    Spell = "spell",
+    Trap = "trap",
+    Synchro = "synchro",
+    Xyz = "xyz"
 }
 
 export enum Modifier {
-    Normal = "Normal",
-    Effect = "Effect",
-    Devine = "Devine",
-    Gemini = "Gemini",
-    Spirit = "Spirit",
-    Toon = "Toon",
-    Tuner = "Tuner",
-    Union = "Union"
+    Normal = "normal",
+    Effect = "effect",
+    Devine = "devine",
+    Gemini = "gemini",
+    Spirit = "spirit",
+    Toon = "toon",
+    Tuner = "tuner",
+    Union = "union"
 }
 
 export enum Attribute {
-    Light = "Light",
-    Dark = "Dark",
-    Fire = "Fire",
-    Water = "Water",
-    Wind = "Wind",
-    Earth = "Earth",
-    Divine = "Divine"
+    Light = "light",
+    Dark = "dark",
+    Fire = "fire",
+    Water = "water",
+    Wind = "wind",
+    Earth = "earth",
+    Divine = "divine"
 }
 
 export enum Rarity {
-    Common = "Common",
-    Rare = "Rare",
-    SuperRare = "Super Rare",
-    UltraRare = "Ultra Rare",
-    SecretRare = "Secret Rare",
-    UltimateRare = "Ultimate Rare"
+    Common = "common",
+    Rare = "rare",
+    SuperRare = "superrare",
+    UltraRare = "ultrarare",
+    SecretRare = "secretrare",
+    UltimateRare = "ultimaterare"
 }

@@ -2,7 +2,7 @@ import * as Discord from 'discord.js';
 import * as express from 'express';
 import * as fs from 'fs';
 import { CommandHandler, HelpMode, ParameterType } from 'mechan.js';
-import { Card, CardType } from './card/Generator';
+import { Card, CardType, Rarity, Modifier } from './card/Generator';
 import { inspect } from 'util';
 // const MainManager = require('./src/MainManager.js');
 // const CommandManager = require('./src/CommandManager.js');
@@ -60,8 +60,7 @@ handler.createCommand('create')
     .addParameter('level', ParameterType.Optional)
     .addParameter('cardtype', ParameterType.Optional)
     .addParameter('attribute', ParameterType.Optional)
-    .addParameter('year', ParameterType.Optional)
-    .addParameter('creator', ParameterType.Optional)
+    .addParameter('rarity', ParameterType.Optional)
     .setCallback((context) => {
         let card = new Card(cards.length)
                         .setCreator(context.user.tag)
@@ -74,6 +73,7 @@ handler.createCommand('create')
         let level = context.params.get('level');
         let cardtype = context.params.get('cardtype');
         let attribute = context.params.get('attribute');
+        let rarity = context.params.get('rarity');
         let year = context.params.get('year');
         let creator = context.params.get('creator');
 
@@ -81,11 +81,32 @@ handler.createCommand('create')
         if (level) card.setLevel(level);
         if (cardtype) {
             let split = cardtype.split('/');
+            let type: CardType;
+            let modifier: Modifier;
+            console.log(CardType);
+            if (Object.values(CardType).includes(split[0])) {
+                type = split[0];
+            } else {
+                context.channel.send(`**${split[0]}** is an invalid \`CardType\`\nValid types are: \`${Object.values(CardType).filter(x => isNaN(x as any)).join(', ')}\``);
+                return;
+            }
+            if (Object.values(Modifier).includes(split[1])) {
+                modifier = split[0];
+            } else {
+                context.channel.send(`**${split[1]}** is an invalid \`Modifier\`\nValid types are: \`${Object.values(Modifier).filter(x => isNaN(x as any)).join(', ')}\``);
+                return;
+            }
             card.setCardType(split[0], split[1]);
         }
         if (attribute) card.setAttribute(attribute);
-        if (year) card.setYear(year);
-        if (creator) card.setCreator(creator);
+        if (rarity) {
+            if (Object.values(Rarity).includes(rarity)) {} 
+            else {
+                context.channel.send(`**${rarity}** is an invalid \`Rairity\`\nValid types are: \`${Object.values(Rarity).filter(x => isNaN(x as any)).join(', ')}\``);
+                return;
+            }
+            card.setRairity(rarity);
+        }
 
         context.channel.send(`\`\`\`js\n${inspect(context.params)}\`\`\``);
         context.channel.send(`\`\`\`js\n${inspect(card)}\`\`\``);
