@@ -174,5 +174,5 @@ enum Rarity {
     SuperRare = "Super Rare",
     UltraRare = "Ultra Rare",
     SecretRare = "Secret Rare",
-    UltimiteRare = "Ultimite Rare"
+    UltimateRare = "Ultimate Rare"
 }
