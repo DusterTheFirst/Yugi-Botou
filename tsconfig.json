@@ -1,0 +1,12 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "watch": true,
+        "target": "es2017",
+        "module": "commonjs",
+        "noImplicitAny": true
+    },
+    "exclude": [
+        "node_modules/"
+    ]
+}

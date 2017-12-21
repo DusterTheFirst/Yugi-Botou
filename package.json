@@ -4,7 +4,7 @@
   "description": "A Discord bot for playing ridiculous custom Yu Gi Oh cards with friends and other people",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,7 +20,8 @@
     "minigame"
   ],
   "contributors": [
-    "Martin Löffler <thpublic@skeletongames.eu>"
+    "Martin Löffler <thpublic@skeletongames.eu>",
+    "Zachary Kohnen <dusterthefirst@gmail.com>"
   ],
   "license": "GPL-3.0",
   "bugs": {
@@ -28,9 +29,12 @@
   },
   "homepage": "https://github.com/FatalErrorCode/Yugi-Botou#readme",
   "dependencies": {
+    "@types/express": "^4.11.0",
+    "@types/node": "^8.5.2",
     "discord.js": "^11.2.1",
     "express": "^4.16.2",
-    "jimp": "^0.2.28"
+    "jimp": "^0.2.28",
+    "mechan.js": "^2.2.6"
   },
   "optionalDependencies": {
     "erlpack": "github:discordapp/erlpack",
